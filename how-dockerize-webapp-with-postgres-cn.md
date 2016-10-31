@@ -23,7 +23,7 @@ docker:组装 使用Postgres数据库的web应用
 docker run --name db -e POSTGRES_PASSWORD=password123 -d postgres
 ```
 
-```-d```的意思是运行这个容器作为守护进程，因此它会在后台悄悄运行。
+`-d`的意思是运行这个容器作为守护进程，因此它会在后台悄悄运行。
 
 接下来，创建应用程序的Postgres用户并创建数据库。要做到这一点，需要打开“db”容器的bash shell：
 
@@ -121,10 +121,10 @@ docker run -d -p 8080:4000 --name tutapp --link db:postgres app
 
 以上命令可分解为：
 
-* ```-d```让Docker运行此容器作为守护进程。 
-* ```-p 8080:4000```让Docker将容器内的端口4000（此应用程序需要的端口）映射到主机的端口8080。
-* ```--name tutapp```命名docker容器为“tutapp”。
-* ```--link db:postgres``` 链接应用程序容器与之前创建的名为‘db’的postgres容器。
+* `-d`让Docker运行此容器作为守护进程。 
+* `-p 8080:4000`让Docker将容器内的端口4000（此应用程序需要的端口）映射到主机的端口8080。
+* `--name tutapp`命名docker容器为“tutapp”。
+* `--link db:postgres` 链接应用程序容器与之前创建的名为‘db’的postgres容器。
 
 链接两个容器：我们的应用程序容器访问一个名为’$POSTGRES_PORT_5432_TCP_ADDR‘的环境变量。这个环境变量包含连接到Postgres DB时的主机地址。因此，我们必须确保我们的```dbconf.yml```文件里的host变量为：
 
